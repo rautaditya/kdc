@@ -2,9 +2,7 @@ import { useEffect, useRef } from "react";
 import { FiMapPin } from "react-icons/fi";
 
 const AREAS = [
-  "Latur City", "Gandhi Chowk", "Ausa Road", "Udgir", "Osmanabad",
-  "Nanded", "Bidar", "Gulbarga", "Ahmedpur", "Nilanga",
-  "Chakur", "Renapur", "Shirur Anantpal", "Ausa",
+  
 ];
 
 export default function LocalSEO() {
@@ -50,7 +48,7 @@ export default function LocalSEO() {
             </div>
 
             <div className="reveal">
-              <p className="text-[12px] font-bold text-darkText/40 uppercase tracking-wider mb-3">We Also Serve Patients From</p>
+              <p className="text-[12px] font-bold text-darkText/40 uppercase tracking-wider mb-3"></p>
               <div className="flex flex-wrap gap-2">
                 {AREAS.map(area => (
                   <span key={area} className="bg-gray-50 text-darkText/60 text-[12px] px-3 py-1.5 rounded-full border border-gray-100">
