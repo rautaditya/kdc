@@ -273,10 +273,17 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/8 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-white/25 text-[12px]">© {new Date().getFullYear()} Yash Super Speciality Dental Clinic · Dr. Ashwin Kodgi · Latur</p>
-          <p className="text-white/15 text-[11px]">Gandhi Chowk, Latur, Maharashtra 413 512</p>
-        </div>
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+  
+  <p className="text-white/40 text-[13px] text-center md:text-left">
+    © {new Date().getFullYear()} Yash Dental Super Speciality Clinic. All Rights Reserved.
+  </p>
+
+  <p className="text-white/30 text-[12px] text-center md:text-right">
+    Designed & Developed by <span className="text-primary font-medium">CODEWINX IT SOLUTION</span>
+  </p>
+
+</div>
       </div>
     </footer>
   );
