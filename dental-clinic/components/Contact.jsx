@@ -68,7 +68,7 @@
 //                 <a href="tel:8806333633" className="text-primary font-body text-[15px] font-medium hover:underline">
 //                   88063 33633
 //                 </a>
-//                 <p className="text-darkText/40 text-[13px] mt-0.5">Mon–Sun · 9 AM – 9 PM</p>
+//                 <p className="text-darkText/40 text-[13px] mt-0.5">Mon–Sun · 11 AM – 4 PM</p>
 //               </div>
 //             </div>
 
@@ -96,9 +96,9 @@
 //                 <p className="font-semibold text-darkText mb-3">Working Hours</p>
 //                 <div className="space-y-1.5">
 //                   {[
-//                     { day: "Monday – Friday", time: "9:00 AM – 9:00 PM" },
-//                     { day: "Saturday", time: "9:00 AM – 9:00 PM" },
-//                     { day: "Sunday", time: "10:00 AM – 6:00 PM" },
+//                     { day: "Monday – Friday", time: "11:00 AM – 4:00 PM" },
+//                     { day: "Saturday", time: "11:00 AM – 4:00 PM" },
+//                     { day: "Sunday", time: "11:00 AM – 1:00 PM" },
 //                   ].map((h) => (
 //                     <div key={h.day} className="flex justify-between text-[14px]">
 //                       <span className="text-darkText/50">{h.day}</span>
@@ -326,7 +326,7 @@ export default function Contact() {
                     88063 33633
                   </a>
                 ),
-                sub: "Mon–Sun · 9 AM – 9 PM",
+                sub: "Mon–Sat· 11AM – 4 PM",
               },
               {
                 icon: <FiMapPin className="text-green-500 text-xl" />,
@@ -350,8 +350,8 @@ export default function Contact() {
                 content: (
                   <div className="space-y-1">
                     {[
-                      ["Mon – Sat", "9:00 AM – 9:00 PM"],
-                      ["Sunday", "10:00 AM – 6:00 PM"],
+                      ["Mon – Sat", "11:00 AM – 4:00 PM"],
+                      ["Sunday", "11:00 AM – 1:00 PM"],
                     ].map(([d, t]) => (
                       <div
                         key={d}
