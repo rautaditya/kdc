@@ -1,75 +1,82 @@
-import { useState, useRef, useEffect } from "react";
-import ReactPlayer from "react-player";
+import { useEffect, useRef } from "react";
 
 export default function Testimonials() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const containerRef = useRef(null);
+  const ref = useRef(null);
 
-  const videos = [
-    "https://youtube.com/shorts/sURTQXxrynQ",
-    "https://youtube.com/shorts/LiaFMiSXJIg",
-    "https://youtube.com/shorts/zE8iYfWjw9w",
-  ];
-
-  // Center scroll when video changes
   useEffect(() => {
-    const container = containerRef.current;
-    const child = container.children[activeIndex];
+    const obs = new IntersectionObserver(
+      (entries) =>
+        entries.forEach(
+          (e) => e.isIntersecting && e.target.classList.add("visible")
+        ),
+      { threshold: 0.1 }
+    );
 
-    if (child) {
-      child.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
-    }
-  }, [activeIndex]);
+    ref.current
+      ?.querySelectorAll(".reveal")
+      .forEach((el) => obs.observe(el));
+
+    return () => obs.disconnect();
+  }, []);
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4">
+    <section
+      id="testimonials"
+      ref={ref}
+      className="py-24 bg-white relative overflow-hidden"
+    >
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">
+          <h2 className="reveal text-4xl font-bold mb-4">
             Real Patient Videos
           </h2>
-          <p className="text-gray-500">
+          <p className="reveal text-gray-500">
             Watch how our patients feel after their treatment.
           </p>
         </div>
 
-        {/* Slider */}
-        <div
-          ref={containerRef}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory"
-        >
-          {videos.map((url, index) => (
-            <div
-              key={index}
-              className={`snap-center flex-shrink-0 w-[280px] transition-all duration-500 ${
-                activeIndex === index
-                  ? "scale-100 opacity-100"
-                  : "scale-90 opacity-50"
-              }`}
-            >
-              <div className="rounded-3xl overflow-hidden shadow-2xl">
-                <ReactPlayer
-                  url={url}
-                  playing={activeIndex === index}
-                  muted
-                  controls
-                  width="100%"
-                  height="500px"
-                  onEnded={() =>
-                    setActiveIndex((prev) => (prev + 1) % videos.length)
-                  }
-                />
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Video Grid */}
+        <div className="reveal grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
+          {/* Video 1 */}
+          <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <iframe
+              className="w-full h-[500px]"
+              src="https://www.youtube.com/embed/sURTQXxrynQ"
+              title="Patient Video 1"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+
+          {/* Video 2 */}
+          <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <iframe
+              className="w-full h-[500px]"
+              src="https://www.youtube.com/embed/LiaFMiSXJIg"
+              title="Patient Video 2"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+
+          {/* Video 3 */}
+          <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <iframe
+              className="w-full h-[500px]"
+              src="https://www.youtube.com/embed/zE8iYfWjw9w"
+              title="Patient Video 3"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+
+        </div>
       </div>
     </section>
   );
