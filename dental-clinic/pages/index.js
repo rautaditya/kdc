@@ -161,15 +161,16 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
-        <About />
+         <Contact />
+          <About />
         <WhyChooseUs />
         <Doctors />
         <Technology />
         <Testimonials />
         <FAQ />
         <LocalSEO />
-        <Contact />
-        <FinalCTA />
+       <FinalCTA />
+        
       </main>
 
       <Footer />
