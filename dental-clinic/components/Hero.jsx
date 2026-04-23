@@ -40,14 +40,12 @@ export default function Hero() {
       if (!isDeleting) {
         setText(currentWord.substring(0, charIndex + 1));
         setCharIndex((prev) => prev + 1);
-
         if (charIndex + 1 === currentWord.length) {
           setTimeout(() => setIsDeleting(true), 800);
         }
       } else {
         setText(currentWord.substring(0, charIndex - 1));
         setCharIndex((prev) => prev - 1);
-
         if (charIndex === 0) {
           setIsDeleting(false);
           setWordIndex((prev) => (prev + 1) % words.length);
@@ -66,7 +64,8 @@ export default function Hero() {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen flex items-center overflow-hidden bg-white pt-24 pb-0"
+      className="relative min-h-screen flex items-center bg-white pt-24 pb-0"
+      style={{ overflow: "hidden" }}
     >
       {/* Soft blue right panel */}
       <div
@@ -89,10 +88,11 @@ export default function Hero() {
         />
       </svg>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 flex items-center min-h-screen">
-        
-        {/* ─── LEFT ─── */}
-        <div className="w-full lg:w-[46%] flex flex-col justify-center py-16 pr-4 lg:pr-8">
+      {/* ── Main layout ── */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 flex items-stretch min-h-screen">
+
+        {/* ─── LEFT — text content ─── */}
+        <div className="w-full lg:w-[46%] flex flex-col justify-center py-16 pr-4 lg:pr-8 z-20">
 
           <div
             className="hero-animate inline-flex items-center gap-2 bg-blue-50 text-blue-600 text-[13px] font-semibold px-4 py-2 rounded-full mb-6 border border-blue-100 w-fit"
@@ -118,11 +118,7 @@ export default function Hero() {
                 {text}
                 <span className="animate-pulse" style={{ color: "#2F80ED" }}>|</span>
               </span>
-              <svg
-                className="absolute -bottom-1 left-0 w-full"
-                viewBox="0 0 200 10"
-                fill="none"
-              >
+              <svg className="absolute -bottom-1 left-0 w-full" viewBox="0 0 200 10" fill="none">
                 <path
                   d="M2 8 Q50 2 100 6 Q150 10 198 4"
                   stroke="#FFC107"
@@ -185,12 +181,7 @@ export default function Hero() {
               <div key={s.label} className="flex items-center gap-3">
                 <span className="text-2xl">{s.icon}</span>
                 <div>
-                  <p
-                    className="font-bold text-2xl"
-                    style={{ color: "#2F80ED" }}
-                  >
-                    {s.value}
-                  </p>
+                  <p className="font-bold text-2xl" style={{ color: "#2F80ED" }}>{s.value}</p>
                   <p className="text-[12px] text-gray-400 mt-0.5">{s.label}</p>
                 </div>
               </div>
@@ -198,10 +189,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* ─── RIGHT ─── */}
-        <div className="hidden lg:flex relative w-[54%] items-center" style={{ height: "100vh" }}>
+        {/* ─── RIGHT — info cards + doctor image ─── */}
+        <div className="hidden lg:block relative w-[54%]" style={{ minHeight: "100vh" }}>
 
-          {/* Doctor name + cards — upper area, left side of right panel */}
+          {/* Doctor name + feature cards — top area */}
           <div
             className="hero-animate absolute z-20 text-left"
             style={{
@@ -209,7 +200,7 @@ export default function Hero() {
               transform: "translateY(20px)",
               transition: "all 0.6s ease",
               top: "50%",
-              left: "2%",
+              left: "6%",
               marginTop: "-260px",
             }}
           >
@@ -223,7 +214,6 @@ export default function Hero() {
               BDS, MDS — Dental Specialist
             </p>
 
-            {/* Feature cards */}
             <div className="flex gap-3">
               {FEATURES.map((f) => (
                 <div
@@ -238,7 +228,6 @@ export default function Hero() {
               ))}
             </div>
 
-            {/* Accepting badge */}
             <div className="flex items-center gap-2 mt-5">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
@@ -250,25 +239,35 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Doctor image — far right, fills full height, bottom-anchored */}
-                   <div
-  className="hero-animate absolute right-[-140px] bottom-[-220px] z-10"
-  style={{
-    opacity: 0,
-    transform: "translateY(30px)",
-    transition: "all 0.6s ease",
-  }}
->
-  <img
-  src="/images/doctor.png"
-  alt="Dr Ashwin Kodgi"
-  className="h-[980px] w-auto max-w-none object-contain block"
-  style={{
-    filter: "drop-shadow(0 10px 50px rgba(47,128,237,0.15))",
-    marginLeft: "4rem"
-  }}
-/>
-</div>
+          {/* Doctor image — bottom anchored, right side, clipped inside section */}
+          <div
+            className="hero-animate absolute z-10"
+            style={{
+              opacity: 0,
+              transform: "translateY(30px)",
+              transition: "all 0.6s ease",
+              bottom: 0,
+              right: 0,
+              left: "30%",
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "flex-end",
+            }}
+          >
+            <img
+              src="/images/doctor.png"
+              alt="Dr Ashwin Kodgi"
+              style={{
+                height: "88vh",
+                width: "auto",
+                maxWidth: "none",
+                objectFit: "contain",
+                objectPosition: "bottom",
+                display: "block",
+                filter: "drop-shadow(0 10px 40px rgba(47,128,237,0.12))",
+              }}
+            />
+          </div>
         </div>
       </div>
     </section>

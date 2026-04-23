@@ -8,7 +8,7 @@ const DOCTORS = [
     degree: "BDS, MDS",
     role: "Chief Dental Surgeon & Implantologist",
     exp: "10+ Years",
-    img: "/images/Ashwin-kodgi.jpg",
+    img: "/images/Ashwin-kodgi.jpeg",
     bg: "from-blue-100 to-blue-50",
     accent: "blue",
     specialties: ["Dental Implants","Root Canal Treatment","Oral Surgery"],
