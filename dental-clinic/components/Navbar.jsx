@@ -36,7 +36,7 @@ export default function Navbar() {
           {/* ── LOGO with hospitallogo.png ── */}
           <button onClick={() => scrollTo("#home")} className="flex items-center gap-3 group">
             <img
-              src="/images/hospitallogo.png"
+              src="/images/logo.png"
               alt="Yash Super Speciality Dental Clinic Logo"
               className="w-12 h-12 object-contain group-hover:scale-105 transition-transform duration-300"
             />
@@ -91,7 +91,7 @@ export default function Navbar() {
           {/* Mobile Logo */}
           <div className="flex items-center gap-3 px-4 pb-4 border-b border-gray-100 mb-2">
             <img
-              src="/hospitallogo.png"
+              src="/images/logo.png"
               alt="Yash Dental Logo"
               className="w-10 h-10 object-contain"
             />
